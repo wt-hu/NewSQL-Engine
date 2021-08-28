@@ -1,5 +1,5 @@
 
-# NewSQL-Engine (a tiny KV存储引擎)
+# NewSQL-Engine (轻量级键值型存储引擎)
 
 NewSQL 是对各种新的可扩展/高性能数据库的简称，这类数据库不仅具有NoSQL对海量数据的存储管理能力，还保持了传统数据库支持ACID和SQL等特性。其中，非关系型数据库redis，以及levedb，rockdb其核心存储引擎的数据结构就是跳表。
 
