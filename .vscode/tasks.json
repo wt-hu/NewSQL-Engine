@@ -1,0 +1,43 @@
+{
+
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell", //类型
+            "label": "main", //任务名称 
+            "command": "g++", //命令,Windows需要修改对应的编译器路径,但是添加了环境变量只写g++即可
+            "args": [
+                "-g",
+                "${file}",
+
+                "-I",                                       //编译包含的头文件,与c_cpp_properties.json的includePath不一样,前者是编译使用,includePath是给VSCode不报错使用
+                //"${fileDirname}\/include\/",
+                "/home/tyy/spdlog/include",
+
+                "-o",
+                "${fileDirname}\/${fileBasenameNoExtension}",//要生成的可执行文件路径.fileDirname指当前目录,fileBasenameNoExtension指可执行程序无后缀的字符串.该.exe路径可以任意指定
+                "-ggdb3",//生成和调试有关的信息
+                "-Wall",
+                "-static-libgcc",//静态链接
+                "-std=c++11",//使用c++11标准
+                "-finput-charset=UTF-8",//输入编译器文本编码,默认为UTF-8
+                //"-fexec-charset=GB18030",//输出的exe文件的编码(Window)
+                "-D _USE_MATH_DEFINES"
+            ],
+            "options":{
+                "cwd": "/usr/bin/" //上面command字段的路径
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",//在终端中显示编译信息的策略，可以我ialways.silent.never
+                "focus": false,
+                "panel": "shared",//不同的文件的编译信息共享一个终端面板
+                //"showReuseMessage": true,
+                //"clear": false
+            }
+        },
+    ]
+}
