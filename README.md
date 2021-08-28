@@ -1,22 +1,22 @@
 
 # NewSQL-Engine (a tiny KV存储引擎)
 
-非关系型数据库redis，以及levedb，rockdb其核心存储引擎的数据结构就是跳表。
+NewSQL 是对各种新的可扩展/高性能数据库的简称，这类数据库不仅具有NoSQL对海量数据的存储管理能力，还保持了传统数据库支持ACID和SQL等特性。其中，非关系型数据库redis，以及levedb，rockdb其核心存储引擎的数据结构就是跳表。
 
 本项目就是基于跳表实现的轻量级键值型存储引擎，使用C++实现。插入数据、删除数据、查询数据、数据展示、数据落盘、文件加载数据，以及数据库大小显示。
 
-在随机写读情况下，该项目每秒可处理啊请求数（QPS）: 23.61w，每秒可处理读请求数（QPS）: 18.66w（实验室服务器下，不同性能和环境有影响）
+在随机写读情况下，该项目每秒可处理啊请求数（QPS）: 23.61w，每秒可处理读请求数（QPS）: 18.66w（测试条件基于实验室服务器下，不同性能和环境有影响）
 
 # 项目中文件
 
 * main.cpp 包含skiplist.h使用跳表进行数据操作
-* skiplist.h 跳表核心实现
-* README.md 中文介绍       
-* bin 生成可执行文件目录 
+* skiplist.h 存储引擎核心（跳表）实现     
+* bin 生成可执行文件目录（.main 和 .stress） 
 * makefile 编译脚本
-* store 数据落盘的文件存放在这个文件夹 
+* store 数据落盘的文件夹（dumpFile）
 * stress_test_start.sh 压力测试脚本
 * LICENSE 使用协议
+* README.md 中文介绍  
 
 
 # skliplist主要提供接口
@@ -35,7 +35,7 @@
 
 ```
 make                 // complie demo main.cpp
-./bin/main 10      // 10为最大跳表树高
+./bin/main 10     // 10 为最大跳表树高,可自由更改
 ```
 
 
